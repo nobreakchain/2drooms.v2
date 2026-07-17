@@ -22,7 +22,7 @@ w.on("cursorMove", function(e) {
       x = xTemp;
       y = yTemp;
     }
-    w.chat.send(getCharProtection(x*128+64,y*128,0,0).toString())
+    w.chat.send(getCharProtection(x*128+64,y*128,0,0).toString());
     w.doGoToCoord(y*32,x*32+16);
   }
   let [tileX,tileY,charX,charY] = cursorCoords;
