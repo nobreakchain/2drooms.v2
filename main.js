@@ -6,7 +6,7 @@ const activeCoords = ["-1,0","0,0","1,0"];
 const mods = ["Ӻ"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
-    temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
+    temp = getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY);
   } else {
     let xTemp = x;
     let yTemp = y;
