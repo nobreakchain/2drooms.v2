@@ -33,7 +33,7 @@ w.on('writeBefore', function(e) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
     owner = owner.trimEnd();
-    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {} else {
+    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username) {} else {
       e.char = temp.char;
       e.color = temp.color;
       e.bgColor = temp.bgColor;
