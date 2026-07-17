@@ -2,7 +2,7 @@ w.doGoToCoord(0,16);
 let x = 0;
 let y = 0;
 let temp = null;
-let activeCoords = [[0,0],[1,0]];
+let activeCoords = ["0,0","1,0"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
     temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
@@ -19,7 +19,7 @@ w.on("cursorMove", function(e) {
     } else if(e.tileY >= y*128+1) {
       y = y+1;
     }
-    if(activeCoords.includes([x,y])) {} else {
+    if(activeCoords.includes(String(x)+","+String(y))) {} else {
       x = xTemp;
       y = yTemp;
     }
