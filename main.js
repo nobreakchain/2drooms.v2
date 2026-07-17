@@ -2,7 +2,8 @@ w.doGoToCoord(0,16);
 let x = 0;
 let y = 0;
 let temp = null;
-let activeCoords = ["0,0","1,0"];
+const activeCoords = ["-1,0","0,0","1,0"];
+const mods = ["gesh"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
     temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
@@ -34,7 +35,7 @@ w.on('writeBefore', function(e) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
     owner = owner.trimEnd();
-    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username) {} else {
+    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username)) {} else {
       e.char = temp.char;
       e.color = temp.color;
       e.bgColor = temp.bgColor;
