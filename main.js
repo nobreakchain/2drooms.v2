@@ -1,4 +1,5 @@
 w.doGoToCoord(0,16);
 w.on("cursorMove", function(e) {
-  w.chat.send("/test");
+  var [tileX, tileY, charX, charY] = cursorCoords;
+  w.chat.send(charY.toString());
 });
