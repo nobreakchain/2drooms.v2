@@ -3,8 +3,9 @@ let x = 0;
 let y = 0;
 let availCoords = [[0,0]];
 w.on("cursorMove", function(e) {
-  if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {} else {
-    // Runs if the condition ISN'T true
+  if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
+    temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
+  } else {
     let xTemp = x;
     let yTemp = y;
     if(e.tileX <= x*128+61) {
@@ -32,13 +33,8 @@ w.on('writeAfter', function(e) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
     owner = owner.trimEnd();
-    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {
-      writeCharTo(e.char, e.color, e.tileX, e.tileY+64, e.charX, e.charY, true, true, e.bgColor, e.bold, e.italic, e.underline, e.strikethrough);
-    } else {
-      e.char = getChar(e.tileX,e.tileY+64,e.charX,e.charY);
-      e.color = getCharColor(e.tileX,e.tileY+64,e.charX,e.charY);
-      e.bgColor = getCharBgColor(e.tileX,e.tileY+64,e.charX,e.charY);
-      e.decoration = getCharDecoration(e.tileX,e.tileY+64,e.charX,e.charY);
+    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {} else {
+      e = temp;
     }
   }
 });
