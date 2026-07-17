@@ -6,7 +6,6 @@ let availCoords = [[0,0]];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
     temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
-    w.chat.send(temp.toString());
   } else {
     let xTemp = x;
     let yTemp = y;
