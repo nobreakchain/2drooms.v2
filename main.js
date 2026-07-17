@@ -22,7 +22,7 @@ w.on("cursorMove", function(e) {
       x = xTemp;
       y = yTemp;
     }
-    w.doGoToCoord(y*32,x*32+16);
+    w.doGoToCoord(-y*32,x*32+16);
   }
   let [tileX,tileY,charX,charY] = cursorCoords;
 });
