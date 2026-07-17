@@ -18,6 +18,7 @@ w.on("cursorMove", function(e) {
     } else if(e.tileY >= y*128+1) {
       y = y+1;
     }
+    w.chat.send(String(x)+","+String(y)+"="+String(getCharProtection(x*128+64,y*128,0,0)))
     if(getCharProtection(x*128+64,y*128,0,0) != 0) {
       x = xTemp;
       y = yTemp;
