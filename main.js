@@ -10,15 +10,14 @@ w.on("cursorMove", function(e) {
     let yTemp = y;
     if(e.tileX <= x*128+61) {
       x = x-1;
-    } else {
+    } else if(e.tileX >= x*128+66) {
       x = x+1;
     }
     if(e.tileY <= y*128-2) {
       y = y-1;
-    } else {
+    } else if(e.tileY >= y*128+1) {
       y = y+1;
     }
-    w.chat.send(String(x)+","+String(y));
     if(getCharProtection(x*128+64,y*128,0,0) != 0) {
       x = xTemp;
       y = yTemp;
