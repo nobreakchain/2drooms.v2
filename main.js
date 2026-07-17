@@ -2,11 +2,10 @@ w.doGoToCoord(0,16);
 let x = 0;
 let y = 0;
 let temp = null;
-const activeCoords = ["-1,0","0,0","1,0"];
 const mods = ["Ӻ"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
-    temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX-1,e.tileY,15,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
+    temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX+1,e.tileY,0,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
   } else {
     let xTemp = x;
     let yTemp = y;
@@ -19,10 +18,6 @@ w.on("cursorMove", function(e) {
       y = y-1;
     } else if(e.tileY >= y*128+1) {
       y = y+1;
-    }
-    if(activeCoords.includes(String(x)+","+String(y))) {} else {
-      x = xTemp;
-      y = yTemp;
     }
     w.doGoToCoord(-y*32,x*32+16);
   }
@@ -39,7 +34,7 @@ w.on('writeBefore', function(e) {
       if(e.char == "\b") {
         temp = temp[0];
       } else {
-        if(e.charX == 0) {
+        if(e.charX == 15) {
           temp = temp[1];
         } else {
           temp = temp[2];
