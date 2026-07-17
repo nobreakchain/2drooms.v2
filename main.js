@@ -30,7 +30,14 @@ w.on('writeBefore', function(e) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
     owner = owner.trimEnd();
-    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username)) {} else {
+    let members = ["","","","",""];
+    for(let i = 1; i < 5; i++) {
+      for(let j = 0; j < 15; j++) {
+        members[i] = members[i] + getChar(x*128+62,y*128+1,j,i+2);
+      }
+      members[i] = members[i].trimEnd();
+    }
+    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username) || members.includes("[ALL]") || members.includes(state.userModel.username)) {} else {
       if(e.char == "\b") {
         temp = temp[0];
       } else {
