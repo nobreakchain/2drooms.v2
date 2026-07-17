@@ -6,7 +6,15 @@ const activeCoords = ["-1,0","0,0","1,0"];
 const mods = ["Ӻ"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
-    temp = getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY);
+    if(e.char == "\b") {
+      temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
+    } else {
+      if(e.charX == 0) {
+        temp = getCharInfo(e.tileX-1,e.tileY,15,e.charY);
+      } else {
+        temp = getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY);
+      }
+    }
   } else {
     let xTemp = x;
     let yTemp = y;
