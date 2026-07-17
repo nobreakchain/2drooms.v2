@@ -5,7 +5,7 @@ let temp = null;
 const mods = ["Ӻ"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
-    temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX+1,e.tileY,0,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
+    temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX-1,e.tileY,15,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
   } else {
     let xTemp = x;
     let yTemp = y;
