@@ -28,9 +28,16 @@ w.on("cursorMove", function(e) {
 w.on('writeBefore', function(e) {
   if(e.tileX >= x*128+62 && e.tileX <= x*128+65 && e.tileY >= y*128-1 && e.tileY <= y*128) {
     let owner = "";
-    for (let i = 0; i < 15; i++) {
+    for(let i = 0; i < 15; i++) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
-    w.chat.send(owner);
+    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {
+      writeCharTo(e.char, e.color, e.tileX, e.tileY+64, e.charX, e.charY, true, true, e.bgColor, e.bold, e.italic, e.underline, e.strikethrough);
+    } else {
+      e.char = getChar(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.color = getCharColor(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.bgColor = getCharBgColor(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.decoration = getCharDecoration(e.tileX,e.tileY+64,e.charX,e.charY);
+    }
   }
 });
