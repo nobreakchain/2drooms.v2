@@ -37,7 +37,7 @@ w.on('writeBefore', function(e) {
       }
       members[i] = members[i].trimEnd();
     }
-    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username) || members.includes("[ALL]") || members.includes(state.userModel.username)) {} else {
+    if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username) || members.includes("[ALL]") || members.filter(a => a !== "").includes(state.userModel.username)) {} else {
       if(e.char == "\b") {
         temp = temp[0];
       } else {
