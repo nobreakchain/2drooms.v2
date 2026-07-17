@@ -1,0 +1,1 @@
+w.chat.send("/test")
