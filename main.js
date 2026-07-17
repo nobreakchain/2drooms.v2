@@ -1,6 +1,7 @@
 w.doGoToCoord(0,16);
 let x = 0;
 let y = 0;
+let temp = null;
 let availCoords = [[0,0]];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
@@ -34,7 +35,10 @@ w.on('writeAfter', function(e) {
     }
     owner = owner.trimEnd();
     if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {} else {
-      e = temp;
+      e.char = temp.char;
+      e.color = temp.color;
+      e.bgColor = temp.bgColor;
+      e.decoration = temp.decoration;
     }
   }
 });
