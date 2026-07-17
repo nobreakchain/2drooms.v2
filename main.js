@@ -7,8 +7,6 @@ w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
     temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX-1,e.tileY,15,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
   } else {
-    let xTemp = x;
-    let yTemp = y;
     if(e.tileX <= x*128+61) {
       x = x-1;
     } else if(e.tileX >= x*128+66) {
@@ -21,7 +19,6 @@ w.on("cursorMove", function(e) {
     }
     w.doGoToCoord(-y*32,x*32+16);
   }
-  let [tileX,tileY,charX,charY] = cursorCoords;
 });
 w.on('writeBefore', function(e) {
   if(e.tileX >= x*128+62 && e.tileX <= x*128+65 && e.tileY >= y*128-1 && e.tileY <= y*128) {
