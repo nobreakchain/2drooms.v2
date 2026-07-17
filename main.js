@@ -27,7 +27,7 @@ w.on("cursorMove", function(e) {
   }
   let [tileX,tileY,charX,charY] = cursorCoords;
 });
-w.on('writeAfter', function(e) {
+w.on('writeBefore', function(e) {
   if(e.tileX >= x*128+62 && e.tileX <= x*128+65 && e.tileY >= y*128-1 && e.tileY <= y*128) {
     let owner = "";
     for(let i = 0; i < 15; i++) {
