@@ -1,1 +1,1 @@
-w.doGoToCoord(16,0);
+w.doGoToCoord(0,16);
