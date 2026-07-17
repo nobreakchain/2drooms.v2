@@ -32,10 +32,13 @@ w.on('writeBefore', function(e) {
       owner = owner + getChar(x*128+62,y*128+1,i,1);
     }
     owner = owner.trimEnd();
-    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {} else {
-      undoWrite();
+    if(owner == "[UNCLAIMABLE]" || owner == state.userModel.username) {
+      writeCharTo(e.char, e.color, e.tileX, e.tileY+64, e.charX, e.charY, true, true, e.bgColor, e.bold, e.italic, e.underline, e.strikethrough);
+    } else {
+      e.char = getChar(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.color = getCharColor(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.bgColor = getCharBgColor(e.tileX,e.tileY+64,e.charX,e.charY);
+      e.decoration = getCharDecoration(e.tileX,e.tileY+64,e.charX,e.charY);
     }
-  } else {
-    undoWrite();
   }
 });
