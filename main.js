@@ -2,7 +2,6 @@ w.doGoToCoord(0,16);
 let x = 0;
 let y = 0;
 let temp = null;
-let availCoords = [[0,0]];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
     temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
@@ -19,7 +18,7 @@ w.on("cursorMove", function(e) {
     } else {
       y = y+1;
     }
-    if(availCoords.includes([x,y])) {} else {
+    if(getCharProtection(x*128+64,y*128,0,0) != 0) {
       x = xTemp;
       y = yTemp;
     }
