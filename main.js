@@ -6,15 +6,7 @@ const activeCoords = ["-1,0","0,0","1,0"];
 const mods = ["Ӻ"];
 w.on("cursorMove", function(e) {
   if(e.tileX >= x*128+61 && e.tileX <= x*128+66 && e.tileY >= y*128-2 && e.tileY <= y*128+1) {
-    if(e.char == "\b") {
-      temp = getCharInfo(e.tileX,e.tileY,e.charX,e.charY);
-    } else {
-      if(e.charX == 0) {
-        temp = getCharInfo(e.tileX-1,e.tileY,15,e.charY);
-      } else {
-        temp = getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY);
-      }
-    }
+    temp = [getCharInfo(e.tileX,e.tileY,e.charX,e.charY),getCharInfo(e.tileX-1,e.tileY,15,e.charY),getCharInfo(e.tileX,e.tileY,e.charX-1,e.charY)];
   } else {
     let xTemp = x;
     let yTemp = y;
@@ -44,6 +36,15 @@ w.on('writeBefore', function(e) {
     }
     owner = owner.trimEnd();
     if(owner == "[UNCLAIMABLE]" || owner == "[NONE]" || owner == state.userModel.username || mods.includes(state.userModel.username)) {} else {
+      if(e.char == "\b") {
+        temp = temp[0];
+      } else {
+        if(e.charX == 0) {
+          temp = temp[1];
+        } else {
+          temp = temp[2];
+        }
+      }
       e.char = temp.char;
       e.color = temp.color;
       e.bgColor = temp.bgColor;
