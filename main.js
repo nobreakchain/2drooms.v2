@@ -1,1 +1,1 @@
-w.chat.send("/test")
+w.doGoToCoord(16,0);
